@@ -12,10 +12,6 @@ const orderRoute = require("./routes/order")
 const stripeRoute = require("./routes/stripe")
 
 
-
-
-
-
 dotenv.config();
 
 mongoose
@@ -38,10 +34,6 @@ app.use(express.json());
 
 
   
-
-
-
-
 app.listen(process.env.PORT || 5000, () => {
   console.log("backend server is running ......");
 });
