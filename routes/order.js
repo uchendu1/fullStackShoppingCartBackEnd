@@ -44,7 +44,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-// get  one product
+// get  one order
 router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
   try {
     const orders = await Order.findOne({userId: req.params.userId});
@@ -101,7 +101,7 @@ router.get("/income", verifyTokenAndAdmin, async (req, res) => {
   const date = new Date();
   const oneMonthAgo = new Date(date.setMonth(date.getMonth() - 1));
   const twoMonthsAgo = new Date(new Date().setMonth(oneMonthAgo.getMonth() - 1));
-  const threeMonthsAgo = new Date(new Date().setMonth(threeMonthsAgo.getMonth() - 1));
+  const threeMonthsAgo = new Date(new Date().setMonth(twoMonthsAgo.getMonth() - 1));
 
 
   try {
