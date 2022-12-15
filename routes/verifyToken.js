@@ -3,12 +3,20 @@ const jwt = require("jsonwebtoken");
 
 const verifyToken = (req, res, next) => {
     const authHeader = req.headers.token;
-    console.log(authHeader, "authHeader ============", req.headers, "req.headers========" )
+    console.log("checking starts here ==============")
+    console.log(authHeader, "authHeader ============", req.header, "req.headers.........." )
+    console.log("checking stops here ==============")
+
     if(authHeader) {
         const token = authHeader.split(" ")[1];
         console.log(token, "token.........")
+        console.log("checking stops here ==============")
+
         jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-            if(err) res.status(403).json("Token not valid!");
+            if(err) {
+                console.log('token not valid', process.env.JWT_SECRET, err)
+                res.status(403).json("Token not valid!"); return;
+            }
             req.user = user
             next();
         })

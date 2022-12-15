@@ -112,7 +112,7 @@ router.get("/income", verifyTokenAndAdmin, async (req, res) => {
         products: { $elemMatch: {productId : productId}
 
         },
-      }) } }, 
+      }) } },  
       {
         $project: {
           month: { $month: "$createdAt" },
